@@ -41,6 +41,8 @@ public class Calculadora {
                             if (mediasSemestrais.get(0) != 0 && mediasSemestrais.get(1) != 0) {
                                 double mediaAnual = calculaMediaAnual(mediasSemestrais);
                                 System.out.println("Média anual do aluno: " + mediaAnual);
+                                String situacaoAluno = situacaoAluno(mediaAnual);
+                                System.out.println("Situação do aluno: " + situacaoAluno);
                             } else {
                                 System.out.println("Médias semestrais não preenchidas corretamente ou iguais a zero!");
                             }
@@ -127,6 +129,22 @@ public class Calculadora {
     public static double calculaMediaAnual(List<Double> medias) {
 
         return (medias.getFirst() * 0.4) + (medias.get(1) * 0.6);
+    }
+
+    public static String situacaoAluno(double mediaAnual) {
+
+        String situacao = "";
+
+        if (mediaAnual <= 3.9) {
+            situacao = "Reprovado";
+        } else if (mediaAnual > 4 && mediaAnual <= 5.9) {
+            situacao = "Exame";
+        } else {
+            situacao = "Aprovado";
+        }
+
+        return situacao;
+
     }
 
 }
